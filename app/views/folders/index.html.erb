@@ -4,11 +4,15 @@
 
 
 	<% @folder_root.each do |folder| %>
+        
+        <tr>
 		<h4>
 			<%=folder.foldername%> |
 			 <%= link_to 'Show folder', folder_path(folder)%>
 			 <%= link_to 'Delete folder', folder_path(folder),method: :delete%>
 		</h4>
+        </tr>
+
 	<% end %>	
 
 <tr>
