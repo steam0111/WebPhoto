@@ -45,9 +45,9 @@ class FoldersController < ApplicationController
 
 	def destroy
   		@folder = Folder.find(params[:id])
-        
+        headId = @folder.head
         if @folder.head != nil
-        	@folder_sub = Folder.where(:user_id => current_user.id, :head =>@folder.head)
+        	@folder_sub = Folder.where(:user_id => current_user.id, :head =>@folder.id)
        
         	@folder_sub.each do |folder| 
 	        folder.destroy
@@ -55,8 +55,11 @@ class FoldersController < ApplicationController
         end
         	
   		@folder.destroy
-			#flash[:alert] = "Folder  deleted. Karma  reduced !"
+  		if headId != nil
+  			redirect_to folder_path(headId)
+  		else
   		redirect_to folders_path
+  	end
 	end
 	private
 		def folder_params
