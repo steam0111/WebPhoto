@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: justfdb
+  host: localhost
+  pool: 5
+  username: justf
+  password: 123456
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: justfdb_test
+  host: localhost
+  pool: 5
+  username: justf
+  password: 123456

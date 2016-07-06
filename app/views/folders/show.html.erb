@@ -1,0 +1,35 @@
+<h1>
+	<stong><%=@folder.foldername%></stong>
+</h1>
+	<% @subs.each do |folder| %>
+		<h4>
+			<%=folder.foldername%> |
+			 <%= link_to 'Show folder', folder_path(folder)%>
+			 <%= link_to 'Delete folder', folder_path(folder),method: :delete%>
+		</h4>
+	<% end %>	
+
+<tr>
+
+<tr>
+	<td>
+	<h2>
+		<stong>Create new folder</stong>
+	</h2>
+	<%= form_for :folder, url: folders_path(folder_head: @folder.id) do |f| %>
+	  <p>
+	    <%= f.label :title %><br>
+	    <%= f.text_field :foldername ,:value => ''%>
+	  </p>
+	  <p>
+	    <%= f.submit 'Create folder' %>
+	  </p>
+	<% end %>
+	</td>
+</tr>
+<% if @folder.head != nil%>
+<%= link_to 'Back', folder_path(@folder.head)%>
+<%else%>
+<%= link_to 'Back', folders_path%>
+<%end%>
+<%= link_to 'Back root', folders_path%>

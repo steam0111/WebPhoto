@@ -1,0 +1,24 @@
+<table>
+	<tr>
+		<td>
+	<h1> Cloud of ideas </h1>
+	<h3>Some words about the project</h3>
+	<h3>Some words about the project</h3>
+	<h3>Some words about the project</h3>
+	<% if user_signed_in? %>
+    	<span>Здравствуйте, <%= current_user.email %></span>
+    	<p><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></p>
+    	</td>
+	<% else %>
+		<%= link_to 'Sign in', new_user_session_path %>
+		</td>
+		<td style='min-width: 25px;'>
+				
+		</td>
+		<td>
+			<h3>Registration</h3>
+    		<%= render "devise/registrations/new" %>
+    	</td>
+	<% end %>
+  </tr>
+</table>
