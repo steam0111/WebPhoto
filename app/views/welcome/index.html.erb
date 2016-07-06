@@ -7,7 +7,8 @@
 	<h3>Some words about the project</h3>
 	<% if user_signed_in? %>
     	<span>Здравствуйте, <%= current_user.email %></span>
-    	<p><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></p>
+    	<p><%= link_to 'Log out', destroy_user_session_path, :method => :delete %>
+    	<%= link_to 'Your photo', folders_path %></p>
     	</td>
 	<% else %>
 		<%= link_to 'Sign in', new_user_session_path %>
