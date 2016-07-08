@@ -10,7 +10,14 @@
 	<% end %>	
 
 <tr>
+<% @folder.photos.each do |photo| %>
+				<p>
+				    <%= image_tag serve_folder_photo_path(@folder,photo)  %>
+					<%= link_to 'delete' , folder_photo_path(@folder,photo), method: :delete %>
 
+				</p> 
+<% end %>
+<%= link_to 'new photo', new_folder_photo_path(@folder) %>
 <tr>
 	<td>
 	<h2>
