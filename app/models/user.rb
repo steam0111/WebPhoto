@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
          :validatable
 
   has_many :folders ,dependent: :destroy
+  has_many :photos, through: :folders 
 end

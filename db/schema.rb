@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705173515) do
+ActiveRecord::Schema.define(version: 20160708075250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,20 @@ ActiveRecord::Schema.define(version: 20160705173515) do
 
   add_index "folders", ["manager_id"], name: "index_folders_on_manager_id", using: :btree
   add_index "folders", ["user_id"], name: "index_folders_on_user_id", using: :btree
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.binary   "data",       null: false
+    t.string   "filename"
+    t.string   "mime_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "folder_id"
+    t.integer  "user_id"
+  end
+
+  add_index "photos", ["folder_id"], name: "index_photos_on_folder_id", using: :btree
+  add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
