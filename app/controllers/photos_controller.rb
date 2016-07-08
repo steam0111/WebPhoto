@@ -25,7 +25,7 @@ class PhotosController < ApplicationController
     # normal save
     if @photo.save
       #redirect_to(@photo, :notice => 'Photo was successfully created.')
-      redirect_to folders_path
+      redirect_to folder_path(params[:folder_id])
     else
       render :action => "new"
     end
@@ -34,7 +34,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
     @photo.destroy
-    redirect_to(photos_url)
+    redirect_to folder_path(params[:folder_id])
   end
 
   def serve
